@@ -4,12 +4,11 @@ extend Literals;
 start syntax Statement
     = varDecl: VarDecl
     | funcStmt: FunctionStmt
-    | \return: "return" Exp Semicolon?
     ;
 
 syntax Semicolon = ";";
 
-syntax FunctionStmt = "function" Identifier "("{Identifier","}* ")" "{"{Statement ""}*"}";
+syntax FunctionStmt = "function" Identifier "("{Identifier","}* ")" "{"{Statement ""}* "return" Exp Semicolon?"}";
 syntax VarDecl = Declarator Identifier "=" Exp Semicolon?;
 syntax Declarator
     = let: "let"
